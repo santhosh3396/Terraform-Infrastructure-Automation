@@ -1,60 +1,40 @@
+# Terraform AWS Infrastructure Automation
 
-# Terraform AWS Cloud Infrastructure Automation
-![Project Image](./terraform-project.png)
-## Description
-
-This **Terraform project** automates the provisioning of a comprehensive AWS cloud infrastructure. The created infrastructure includes setting up VPC, Internet Gateways, Routes, Subnets, and Security Groups. In addition to these networking components, the configuration scripts in this project automatically attach an Elastic IP to the network interface. 
-
-The primary objective of this project is to facilitate the quick and efficient deployment of an Ubuntu server, subsequently setting up Apache2 on it. This end-to-end automation ensures a streamlined and error-free setup, significantly reducing the manual effort involved in configuring each component separately.
-
-## Table of Contents
-
-- [Getting Started](#Quick-Start)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Terraform Configuration](#installation)
-
-### Prerequisites
-
-List any prerequisites that users need to have in order to use your project. For example:
-
-- **Terraform** (version: 1.5.6)
-- **AWS** account with appropriate permissions
-
-## Quick-Start
-
-For a quick start, clone the repository and follow the setup instructions mentioned in the [Installation](#Installation) section of this document. 
-
----
+This project uses Terraform to create an AWS EC2 instance and install Apache web server automatically.
 
 ## Features
-- **VPC Setup**: Configuration of a Virtual Private Cloud to facilitate isolated cloud resources.
-- **Internet Gateway and Route Tables**: Ensures proper routing of network traffic.
-- **Subnet Creation**: Setup of subnets for organizing resources.
-- **Security Groups Configuration**: Implementation of security rules for resource access.
-- **Elastic IP Attachment**: Automatic attachment of Elastic IP to the network interface.
-- **Ubuntu Server Deployment**: Deployment of an Ubuntu server within the configured network.
-- **Apache2 Setup**: Installation and configuration of the Apache2 web server on the Ubuntu server.
+- Infrastructure as Code using Terraform
+- AWS EC2 provisioning
+- Apache installation using user_data script
+- CI/CD using GitHub Actions
 
-Whether you are looking to quickly deploy a web server or set up a complex network for your applications on AWS, this Terraform project can be a starting point to automate and streamline the entire process. 
+## Project Structure
+.
+├── environments/dev/main.tf
+├── install_apache.sh
+├── main.tf
+└── .github/workflows/terraform.yml
 
-### Installation
+## How to Run
 
-Explain how to install your project, including any specific commands or steps. For example:
+1. Go to dev environment:
+cd environments/dev
 
-```bash
-# Clone the repository
-git clone https://github.com/Nadav23AnT/terraform-infrastructure-automation.git
+2. Initialize Terraform:
+terraform init
 
-# Change into the project directory
-cd terraform-infrastructure-automation
-
-# Initialize Terraform
-╰─ terraform init -backend-config="access_key={your-access-key}" 
-                  -backend-config="secret_key={your-secret-key}"
-
-# Apply the configuration
+3. Apply configuration:
 terraform apply
-```
-![featured](https://github.com/Nadav23AnT/terraform-infrastructure-automation/assets/71144691/14fda042-5ea6-40ef-a366-da6e64303bbb)
-![Project Image](./terraform-project.png)
+
+## Output
+- EC2 instance will be created
+- Apache web server will be installed
+- You can access website using EC2 Public IP
+
+## Tools Used
+- Terraform
+- AWS
+- GitHub Actions
+
+## Author
+Santhosh Gurujupalli
