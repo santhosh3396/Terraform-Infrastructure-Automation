@@ -1,6 +1,6 @@
 # configured aws provider with proper credentials
 provider "aws" {
-   region     = "us-east-1"
+   region     = "ap-south-1"
    access_key = ""
    secret_key = ""
 }
@@ -10,8 +10,7 @@ terraform {
   backend "s3" {
     bucket  = "myterraformbucket-test"
     key     = "build/terraform.tfstate"
-    region  = "us-east-1"
-    profile = "terraform-user"
+    region  = "ap-south-1"
   }
 }
 
@@ -51,7 +50,7 @@ resource "aws_route_table" "dev-route-01" {
 resource "aws_subnet" "subnet-01" {
   vpc_id = aws_vpc.dev-vpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
 
   tags = {
     Name = "Dev-subnet"
@@ -129,7 +128,7 @@ resource "aws_eip" "lb" {
 resource "aws_instance" "web-server-instance" {
   ami = "ami-053b0d53c279acc90"
   instance_type = "t2.micro"
-  availability_zone = "us-east-1a"
+  availability_zone = "ap-south-1a"
   key_name = "ec2-01-kp"
 
   network_interface {
